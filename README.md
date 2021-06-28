@@ -1,4 +1,4 @@
-# Final Project
+# Final Project - Credit Card Spend Prediction
 
 ## Selected Topic
 Category: Financial
