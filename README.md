@@ -15,6 +15,18 @@ For my analysis I will be using publically available sociodemographic data from 
 * How does sociodemographic data affect consumer spend in a given census block group?
 
 ## Current Limitations (as of Project Deliverable #1)
-* the datasets timelines do not properly align
-* random forest regessor model does not seem suitable for this dataset (score of .30 for test data), so throughout the next week I plan to try other methods such as linear regression, supprt vector machine regression, etc.
-* eventually, I would like to map the results and add Points of Interest data from Open Street Map. This data can allow analysts to see additional things like, 'are there competitors in the recommended areas for site selection?'
+* The datasets timelines do not properly align
+* The first pass at random forest regessor model does not seem suitable for this dataset (score of .30 for test data), so perhaps there is over and underfitting happening
+* Eventually, I would like to map the results and add Points of Interest data from Open Street Map. This data can allow analysts to see additional things like, 'are there competitors in the recommended areas for site selection?'
+
+## Deliverable #2 Updates (July 11, 2021)
+* I migrated the mastercard data from a csv into a postgres data base
+* Using SQLAlchemy I brought the data in from my database and merged it with my CARTO Data Observatory sociodemographic dataset
+* Once I merged the data, my preprocessing steps were as follows:
+  * Preprocessing Process:
+  * Define the features set
+  * Define the target set
+  * Split into training and testing sets
+  * Create a StandardScaler instance
+  * Fit the StandardScaler
+  * Scale the data
