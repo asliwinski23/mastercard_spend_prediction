@@ -47,3 +47,6 @@ For my analysis I will be using publically available sociodemographic data from 
       * Random Forests are not easily interpretable. They provide feature importance but it does not provide complete visibility into the coefficients as linear regression.
       * Random Forests can be computationally intensive for large datasets. (not an issue in our case, we only have 8,969 rows)
       * Random forest is like a black box algorithm, you have very little control over what the model does.   
+
+* Presentation (very) rough draft
+  * https://docs.google.com/presentation/d/1JxmiO8Tx2tYM9Fvyu4VvU-7S7dynUy1foTjtlMmGuvU/edit?usp=sharing
