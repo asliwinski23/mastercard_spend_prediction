@@ -43,10 +43,17 @@ For my analysis I will be using publically available sociodemographic data from 
       *  Random Forests are not influenced by outliers to a fair degree. It does this by binning the variables.
       *  Random Forests can handle linear and non-linear relationships well.
       *  Random Forests generally provide high accuracy and balance the bias-variance trade-off well. Since the model’s principle is to average the results across the multiple decision trees it builds, it averages the variance as well.
-    * Cons:
+    * Limitations:
       * Random Forests are not easily interpretable. They provide feature importance but it does not provide complete visibility into the coefficients as linear regression.
       * Random Forests can be computationally intensive for large datasets. (not an issue in our case, we only have 8,969 rows)
-      * Random forest is like a black box algorithm, you have very little control over what the model does.   
+      * Random forest is like a black box algorithm, you have very little control over what the model does.  
 
-* Presentation (very) rough draft
+## Deliverable #3 Updates (July 18, 2021)
+* Data updates:
+  * I removed Mastercard retail index spend scores that are > 1,000 from the data (explained below)
+  
+* Model updates
+  * 
+
+* Presentation rough draft
   * https://docs.google.com/presentation/d/1JxmiO8Tx2tYM9Fvyu4VvU-7S7dynUy1foTjtlMmGuvU/edit?usp=sharing
