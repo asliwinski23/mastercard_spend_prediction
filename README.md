@@ -77,20 +77,20 @@ For my analysis I will be using publically available sociodemographic data from 
     * Test data r-squared: .28
     * Due to the fact that the model with all of the features (165) had the same r-sqaured as the model with only the top feature it is clear that the top feature (geo_id) explains almost all of the variance in the Mastercard retail spend index score. Thus, we conclude that sociodemographic data in a census block group is not a good predictor of spend within that block group for these models.
 
-  * Secondary Model
-    * We cannot yet conclude that sociodemographic data does not impact retail spend score in a census block group. So, I tried a different model type, Multiple Regression.
-    * Advantages:
-      * The ability to determine the relative influence of one or more predictor variables to the criterion value
-      * The ability to detect outliers
-    * Limitations:
-      * Any disadvantage of using a multiple regression model usually comes down to the data being used. 
-      * Two examples of this are using incomplete data and falsely concluding that a correlation is a causation.
-    * Results:
-      * R-squared of 0.04
-      * This model performed much worse than the Random Forest testing. We still cannot conclude that sociodemographics does not impact retail spend in a census block group, but we can say with certainty that this is not the model that would highlight this relationship.
-    * Heteroscedacity analysis
-      * To test for heteroscedacity, I plotted the residuals from the multiple regression model against the predicted values and another graph against the actual values.
-      * In the graph with the actual values, some outliers were determined. Thus, we chose to drop any retail index spend scores greater than 1,000.
+ * Secondary Model
+   * We cannot yet conclude that sociodemographic data does not impact retail spend score in a census block group. So, I tried a different model type, Multiple Regression.
+   * Advantages:
+     * The ability to determine the relative influence of one or more predictor variables to the criterion value
+     * The ability to detect outliers
+   * Limitations:
+     * Any disadvantage of using a multiple regression model usually comes down to the data being used. 
+     * Two examples of this are using incomplete data and falsely concluding that a correlation is a causation.
+   * Results:
+     * R-squared of 0.04
+     * This model performed much worse than the Random Forest testing. We still cannot conclude that sociodemographics does not impact retail spend in a census block group, but we can say with certainty that this is not the model that would highlight this relationship.
+   * Heteroscedacity analysis
+     * To test for heteroscedacity, I plotted the residuals from the multiple regression model against the predicted values and another graph against the actual values.
+     * In the graph with the actual values, some outliers were determined. Thus, we chose to drop any retail index spend scores greater than 1,000.
 
 * Dashboard
   * I created the diagram below to walk viewers through my project:
