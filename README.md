@@ -38,7 +38,7 @@ For my analysis I will be using publically available sociodemographic data from 
 
 * Notes on my model
   * As mentioned, I have chosen a Random Forest model to train. Below are some of the pros and limitations of this choice:
-    * Pros:
+    * Advantages:
       *  Random Forests implicitly perform feature selection and generate uncorrelated decision trees. It does this by choosing a random set of features to build each decision tree. This also makes it a great model when you have to work with a high number of features in the data
       *  Random Forests are not influenced by outliers to a fair degree. It does this by binning the variables.
       *  Random Forests can handle linear and non-linear relationships well.
@@ -52,8 +52,51 @@ For my analysis I will be using publically available sociodemographic data from 
 * Data updates:
   * I removed Mastercard retail index spend scores that are > 1,000 from the data (explained below)
   
-* Model updates
-  * 
+* Primary model updates
+  * I ran three random forest models, each with a different number of sociodemographic features:
+     1: 164 features (all)
+     2: 120 features
+     3: 41 features
+     4: 1 feature
+
+  * Process for feature selection:
+    * After I ran the initial test with all 165 features, I used the following code to rank the features by their importance in predicting retail spend:
+    
+    sorted(zip(rf_model.feature_importances_,X_columns), reverse = True)
+    
+  * Primary model parameters:
+    * For all 3 random forest models I ran, I used the same parameters:
+      * 75/25 test/train split
+      * test/train data random_state: 20
+      * model n_estimators: 1,000
+      * model random_state: 500  
+
+  * Primary model results:
+    * Each model produced nearly identical R-squared numbers.
+    * Train data r-squared: .45
+    * Test data r-squared: .28
+    * Due to the fact that the model with all of the features (165) had the same r-sqaured as the model with only the top feature it is clear that the top feature (geo_id) explains almost all of the variance in the Mastercard retail spend index score. Thus, we conclude that sociodemographic data in a census block group is not a good predictor of spend within that block group for these models.
+
+  * Secondary Model
+    * We cannot yet conclude that sociodemographic data does not impact retail spend score in a census block group. So, I tried a different model type, Multiple Regression.
+    * Advantages:
+      * The ability to determine the relative influence of one or more predictor variables to the criterion value
+      * The ability to detect outliers
+    * Limitations:
+      * Any disadvantage of using a multiple regression model usually comes down to the data being used. 
+      * Two examples of this are using incomplete data and falsely concluding that a correlation is a causation.
+    * Results:
+      * R-squared of 0.04
+      * This model performed much worse than the Random Forest testing. We still cannot conclude that sociodemographics does not impact retail spend in a census block group, but we can say with certainty that this is not the model that would highlight this relationship.
+    * Heteroscedacity analysis
+      * To test for heteroscedacity, I plotted the residuals from the multiple regression model against the predicted values and another graph against the actual values.
+      * In the graph with the actual values, some outliers were determined. Thus, we chose to drop any retail index spend scores greater than 1,000.
+
+* Dashboard
+  * I created the diagram below to walk viewers through my project:
+
+* Conclusions & next proposed steps:
+  * Based on my Random Forest and Multiple Regression models, sociodemographics in a census block group do not impact the consumer spend in retail within that block group. However, there are still other supervised learning models we could test to see if the problem is the model we are using or if the sociodemographic data does not relate. A dataset that I think could be interesting to analyze and run through our models instead of sociodemographic data would be point of interest (POI) data in a block group. For example, if there is a GAP or a Bloomingdale's in a block group, how do these POIs affect spend? It would be interesting to see how non-retail POIs (ex: Starbucks or a park) prescense affects retail spend as well.
 
 * Presentation rough draft
   * https://docs.google.com/presentation/d/1JxmiO8Tx2tYM9Fvyu4VvU-7S7dynUy1foTjtlMmGuvU/edit?usp=sharing
