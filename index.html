@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <!-- link to bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- link to style sheet-->
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body class="bg-info">
+    <!-- add a wrapper class to add extra functionality to bootstrap-->
+    <div class="wrapper">
+        <nav class="navbar navbar-dark bg-info navbar-expand-lg">
+            <!--reset the webpage after a filter has been aplied to the table-->
+            <a class="navbar-brand" href="index.html">Final Project: Alaina Sliwinski</a>
+        </nav>
+
+        <div class="jumbotron">
+            <h1 class="display-5">Predicting Spend Based on Sociodemographic Factors</h1>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h3>Project Overview <small><br>Tools, Data, Model, Next Steps</small></h3>
+                </div>
+                <div class="col-md-9">
+                    <p>
+                        For my final project I studied how socidemographic factors relate to indexed spend scores for 
+                        retailers at the census block level in Manhattan. Being able to predict spend at such a granular 
+                        level could be useful for real estate analysts evaluating site selection options for a retailer among 
+                        other analyses.
+                        <br>
+                        <br>
+                        <h5>Tools:</h5>
+                        CARTO, postgres, jupyter, python, github
+                        <br><br>
+                        <h5>Data:</h5>
+                        Mastercard Geographic Insights, ACS Sociodemographics
+                        <br><br>
+                        <h5>Geography:</h5>
+                        <img src="static/images/map.png" alt="Italian Trulli">
+                        <br><br>
+                        <h5>Model choice:</h5> Random Forest and Multiple Regression
+                        <br><br>
+                        <h5>Model parameters: </h5>
+                        I ran three random forest models, each with a different number of sociodemographic features:
+                        <br>
+                        1: 164 features (all)
+                        <br>
+                        2: 120 features
+                        <br>
+                        3: 41 features
+                        <br>
+                        4: 1 feature
+                        <br>
+                        For all 3 random forest models I ran, I used the same parameters:
+                        <br>
+                        80/20 test/train split
+                        <br>
+                        test/train data random_state: 20
+                        <br>
+                        model n_estimators: 1,000
+                        <br>
+                        model random_state: 500
+                        <br><br>
+                        Multiple regression:
+                        <br>
+                        41 features
+                        <br>
+                        80/20 test/train split
+                        <br><br>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- create a form tag for user input-->
+                    <form class="bg-info">
+                        <p>Discover the r-sqaured value for each test!</p>
+                        <ul class="list-group bg-dark">
+                                <!--type="button" tells the browser that, by default, the button does nothing. However, our custom JavaScript script will overwrite the default behavior—as if the button is waiting for instruction.-->
+                            <!-- add the list items: one for the input, one for the button-->
+                            <li class="list-group-item bg-dark">
+                                <label for="date">Model Type (random forest or multiple regression)</label> <br>
+                                <input type="text" placeholder="Random Forest" id="model_type" />
+                                <!-- There are three things to keep in mind when looking at this input:
+                                    The type="text" means that the code will look for text to be input.
+                                    The placeholder is an example of a date to search, so users know both the location and the format to use when inputting a date.
+                                    The id="datetime" is what our JavaScript code will look for when the button is clicked and the function is executed.-->
+                            </li>
+                            <li class="list-group-item bg-dark">
+                                <label for="city">Number of Features (1, 41, 120, 165)</label> <br>
+                                <input type="text" placeholder="41" id="features" />
+                            </li>
+                            <li class="list-group-item bg-dark"></li>
+                            <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
+                        </ul>
+                    </form>
+                </div>
+                <div class="col-md-9">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Model Type</th>
+                                <th>Features</th>
+                                <th>R-Squred Train</th>
+                                <th>R-Squared Test</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <br><br>
+    <div class="col-md-4">
+        <h3>Conclusions and next steps:</h3>
+     </div>
+     <div class="col-md-12">
+        <p>
+            Random Forest certainly performed better than Multiple Regression. However, Due to the fact that the model with 
+            all of the features (165) had the same r-sqaured as the model with only the top feature it is clear that the top 
+            feature (geo_id) explains almost all of the variance in the Mastercard retail spend index score. Thus, we conclude that 
+            sociodemographic data in a census block group is not a good predictor of spend within that block group for these models.
+            <br>
+            Proposed steps include: thoroughly go through features and remove outliers from sociodemographic data and 
+            rerun models, try different supervised learned algorithms, and use the same algorithms, but with different
+            features (ex: Points of Interest (POIs)
+            <br>
+            <img src="static/images/POI.png" alt="Italian Trulli">
+        </p>
+    </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/app.js"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,10 @@
+body {
+
+    color: #fcfcfc;
+  }
+
+  .jumbotron {
+    background-image: url("../images/nyc_night.jpg");
+    background-size: 100% 100%;
+    text-align: center;
+  }
