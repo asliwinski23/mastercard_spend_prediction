@@ -47,14 +47,16 @@
                         Mastercard Geographic Insights, ACS Sociodemographics
                         <br><br>
                         <h5>Geography:</h5>
+                        233 census block groups in Manhattan were analyzed
+                        <br>
                         <img src="static/images/map.png" alt="Italian Trulli">
                         <br><br>
                         <h5>Model choice:</h5> Random Forest and Multiple Regression
                         <br><br>
                         <h5>Model parameters: </h5>
-                        I ran three random forest models, each with a different number of sociodemographic features:
+                        I ran four random forest models, each with a different number of sociodemographic features:
                         <br>
-                        1: 164 features (all)
+                        1: 234 features (all)
                         <br>
                         2: 120 features
                         <br>
@@ -62,7 +64,7 @@
                         <br>
                         4: 1 feature
                         <br>
-                        For all 3 random forest models I ran, I used the same parameters:
+                        For all four random forest models I ran, I used the same parameters:
                         <br>
                         80/20 test/train split
                         <br>
@@ -72,11 +74,19 @@
                         <br>
                         model random_state: 500
                         <br><br>
-                        Multiple regression:
+                        I ran three multiple regression model, each with a different number of sociodemographic features::
                         <br>
-                        41 features
+                        1: 234 features (all)
+                        <br>
+                        2: 120 features
+                        <br>
+                        3: 41 Features
+                        <br>
+                        For all three multiple regression models I ran, I used the same parameters:
                         <br>
                         80/20 test/train split
+                        <br>
+                        model random_state: 20
                         <br><br>
                     </p>
                 </div>
@@ -93,13 +103,12 @@
                                 <!--type="button" tells the browser that, by default, the button does nothing. However, our custom JavaScript script will overwrite the default behavior—as if the button is waiting for instruction.-->
                             <!-- add the list items: one for the input, one for the button-->
                             <li class="list-group-item bg-dark">
-                                <label for="date">Model Type (random forest or multiple regression)</label> <br>
+                                <label for="date">Model Type (Random Forest or Multiple Regression)</label> <br>
                                 <input type="text" placeholder="Random Forest" id="model_type" />
                                 <!-- There are three things to keep in mind when looking at this input:
                                     The type="text" means that the code will look for text to be input.
                                     The placeholder is an example of a date to search, so users know both the location and the format to use when inputting a date.
                                     The id="datetime" is what our JavaScript code will look for when the button is clicked and the function is executed.-->
-                            </li>
                             <li class="list-group-item bg-dark">
                                 <label for="city">Number of Features (1, 41, 120, 165)</label> <br>
                                 <input type="text" placeholder="41" id="features" />
@@ -131,13 +140,12 @@
      </div>
      <div class="col-md-12">
         <p>
-            Random Forest certainly performed better than Multiple Regression. However, Due to the fact that the model with 
-            all of the features (165) had the same r-sqaured as the model with only the top feature it is clear that the top 
-            feature (geo_id) explains almost all of the variance in the Mastercard retail spend index score. Thus, we conclude that 
-            sociodemographic data in a census block group is not a good predictor of spend within that block group for these models.
+            The top factors affecting spend are females age 20, employed agriculture, forestry, finishing, hunting, and mining, male 30 to 34,
+            male 45 to 64 with less than 9th grade education, male 45 to 64 with some college
             <br>
-            Proposed steps include: thoroughly go through features and remove outliers from sociodemographic data and 
-            rerun models, try different supervised learned algorithms, and use the same algorithms, but with different
+            The r-squared results are lower than I would like for both the Random Forest and Multiple Regression results. Typically, a 0.3 r-squared is considered satisfactory when predicting financial values. It is unclear why each model produced the same results for Random Forest models.
+            <br>
+            Proposed steps include: further explore why our Random Forest Models were producing the same results, try different supervised learned algorithms, and use the same algorithms, but with different
             features (ex: Points of Interest (POIs)
             <br>
             <img src="static/images/POI.png" alt="Italian Trulli">

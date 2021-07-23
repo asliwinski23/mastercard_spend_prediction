@@ -5,6 +5,6 @@ body {
 
   .jumbotron {
     background-image: url("../images/nyc_night.jpg");
-    background-size: 100% 100%;
+    background-size: 80% 100%;
     text-align: center;
   }
